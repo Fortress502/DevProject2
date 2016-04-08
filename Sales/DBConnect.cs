@@ -12,7 +12,7 @@ namespace Sales
         //Constructor
         public DBConnect()
         {
-            Initialize();
+
         }
 
 
@@ -22,19 +22,12 @@ namespace Sales
         }
 
 
-
-        //Initialize values
-        private void Initialize()
-        {
-            string connString = "Server=127.0.0.1;Port=3306;Database=sales;Uid=root;password=alpine12";
-            MySqlConnection conn = new MySqlConnection(connString);
-        }
-
-
-
         //Open Connection
         private bool OpenConnection()
         {
+            string connString = "Server=110.22.83.243;Port=8181;Database=sales;Uid=root;password=alpine12";
+            MySqlConnection conn = new MySqlConnection(connString);
+
             try
             {
                 conn.Open();
@@ -49,6 +42,9 @@ namespace Sales
                         break;
                     case 1045:
                         Console.WriteLine("Invalid user/pass");
+                        break;
+                    default:
+                        Console.WriteLine("Unknown Error");
                         break;
                 }
                 return false;
