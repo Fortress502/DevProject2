@@ -54,5 +54,23 @@ namespace Sales
                 return false;
             }
         }
+
+        private bool CloseConnection()
+        {
+            try
+            {
+                conn.Close();
+                return true;
+            } 
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+
+
+
     }
 }
