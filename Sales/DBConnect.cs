@@ -15,6 +15,34 @@ namespace Sales
 
         }
 
+        public void test()
+        {
+            string connStr = "Server=127.0.0.1;Port=3307;Database=sales;Uid=root;password=alpine12";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            try
+            {
+                Console.WriteLine("Connecting to MySQL...");
+                conn.Open();
+
+                string sql = "SELECT ItemID FROM Inventory WHERE ItemName='Test'";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    Console.WriteLine(rdr[0] + " -- " + rdr[1]);
+                }
+                rdr.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            conn.Close();
+            Console.WriteLine("Done.");
+        }
+
 
         public MySqlConnection conn
         {
@@ -25,7 +53,7 @@ namespace Sales
         //Open Connection
         private bool OpenConnection()
         {
-            string connString = "Server=127.0.0.1;Port=3306;Database=sales;Uid=root;password=alpine12";
+            string connString = "Server=127.0.0.1;Port=3307;Database=sales;Uid=root;password=alpine12";
             MySqlConnection conn = new MySqlConnection(connString);
 
             try
