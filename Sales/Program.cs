@@ -16,6 +16,15 @@ namespace Sales
         static void Main()
         {
             Console.WriteLine("Test");
+
+            DBConnect db = new DBConnect();
+
+            db.Insert();
+            
+
+
+
+
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
