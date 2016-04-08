@@ -72,7 +72,7 @@ namespace Sales
 
         public void Insert()
         {
-            string query = "INSERT INTO `inventory` (`ItemID`, `Price`, `Quantity`, `ItemName`) VALUES (NULL, '50', '2', 'Screw Driver');";
+            string query = "INSERT INTO `Inventory` (`ItemID`, `Price`, `Quantity`, `ItemName`) VALUES (3, '50', '2', 'Screw Driver');";
 
 
             //Open Connection
@@ -90,6 +90,39 @@ namespace Sales
             }
         }
 
+        public void Update()
+        {
+            string query = "UPDATE `Inventory` SET Price='100', Quantity='3', ItemName='Super Driver' WHERE ItemID='3'";
+
+            if (this.OpenConnection() == true)
+            {
+                // Create command and assign the query and conn from the constructor.
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                //Execute Query
+                cmd.ExecuteNonQuery();
+                //Close Connection
+                this.CloseConnection();
+
+
+            }
+        }
+
+        public void Delete()
+        {
+            string query = "DELETE FROM 'Inventory' WHERE ItemName='Super Driver'";
+
+            if (this.OpenConnection() == true)
+            {
+                // Create command and assign the query and conn from the constructor.
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                //Execute Query
+                cmd.ExecuteNonQuery();
+                //Close Connection
+                this.CloseConnection();
+
+
+            }
+        }
 
 
     }
