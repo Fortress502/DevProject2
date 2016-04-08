@@ -25,7 +25,7 @@ namespace Sales
         //Open Connection
         private bool OpenConnection()
         {
-            string connString = "Server=110.22.83.243;Port=8181;Database=sales;Uid=root;password=alpine12";
+            string connString = "Server=127.0.0.1;Port=3306;Database=sales;Uid=root;password=alpine12";
             MySqlConnection conn = new MySqlConnection(connString);
 
             try
