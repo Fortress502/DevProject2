@@ -70,7 +70,7 @@ namespace Sales
         }
 
 
-        public void Inert()
+        public void Insert()
         {
             string query = "INSERT INTO `inventory` (`ItemID`, `Price`, `Quantity`, `ItemName`) VALUES (NULL, '50', '2', 'Screw Driver');";
 
