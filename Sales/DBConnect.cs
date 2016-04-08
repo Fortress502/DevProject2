@@ -7,7 +7,7 @@ using MySql.Data.MySqlClient;
 
 namespace Sales
 {
-    class DBConnect
+    public class DBConnect
     {
         //Constructor
         public DBConnect()
@@ -54,5 +54,43 @@ namespace Sales
                 return false;
             }
         }
+
+        private bool CloseConnection()
+        {
+            try
+            {
+                conn.Close();
+                return true;
+            } 
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+
+        public void Inert()
+        {
+            string query = "INSERT INTO `inventory` (`ItemID`, `Price`, `Quantity`, `ItemName`) VALUES (NULL, '50', '2', 'Screw Driver');";
+
+
+            //Open Connection
+
+            if (this.OpenConnection() == true)
+            {
+                // Create command and assign the query and conn from the constructor.
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                //Execute Query
+                cmd.ExecuteNonQuery();
+                //Close Connection
+                this.CloseConnection();
+
+
+            }
+        }
+
+
+
     }
 }
