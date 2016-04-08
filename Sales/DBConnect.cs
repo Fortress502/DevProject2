@@ -24,7 +24,7 @@ namespace Sales
                 Console.WriteLine("Connecting to MySQL...");
                 conn.Open();
 
-                string sql = "SELECT ItemID FROM Inventory WHERE ItemName='Test'";
+                string sql = "SELECT ItemID FROM INVENTORY WHERE ItemName='Test'";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
 
@@ -96,7 +96,7 @@ namespace Sales
 
         public void Insert()
         {
-            string query = "INSERT INTO `Inventory` (`ItemID`, `Price`, `Quantity`, `ItemName`) VALUES (3, '50', '2', 'Screw Driver');";
+            string query = "INSERT INTO `INVENTORY` (`ItemID`, `Price`, `Quantity`, `ItemName`) VALUES (3, '50', '2', 'Screw Driver');";
 
 
             //Open Connection
@@ -116,7 +116,7 @@ namespace Sales
 
         public void Update()
         {
-            string query = "UPDATE `Inventory` SET Price='100', Quantity='3', ItemName='Super Driver' WHERE ItemID='3'";
+            string query = "UPDATE `INVENTORY` SET Price='100', Quantity='3', ItemName='Super Driver' WHERE ItemID='3'";
 
             if (this.OpenConnection() == true)
             {
@@ -133,7 +133,7 @@ namespace Sales
 
         public void Delete()
         {
-            string query = "DELETE FROM 'Inventory' WHERE ItemName='Super Driver'";
+            string query = "DELETE FROM 'INVENTORY' WHERE ItemName='Super Driver'";
 
             if (this.OpenConnection() == true)
             {

@@ -25,7 +25,7 @@ namespace Sales
 
             db.test();
 
-
+            Console.ReadLine();
 
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
