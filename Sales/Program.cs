@@ -19,13 +19,31 @@ namespace Sales
 
             DBConnect db = new DBConnect();
 
-           db.Insert();
-           //db.Update();
-           //db.Delete();
-            
+            string dbtable;
+            string dboperation;
 
+            Console.WriteLine("Select Table");
+            dbtable = Console.ReadLine();
 
+            Console.WriteLine("Select Database Operation");
+            dboperation = Console.ReadLine();
 
+            switch(dboperation)
+            {
+                case "Insert":
+                    db.InventoryInsert();
+                    break;
+                case "Update":
+                    db.InventoryUpdate();
+                    break;
+                case "Delete":
+                    db.InventoryDelete();
+                    break;
+                default:
+                    Console.WriteLine("Error Selecting Database Operation");
+                    Console.ReadLine();
+                    break;
+            }
 
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
