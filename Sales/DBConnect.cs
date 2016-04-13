@@ -64,13 +64,27 @@ namespace Sales
         }
 
 
-        public void Insert()
+        public void InventoryInsert()
         {
-            string query = "INSERT INTO INVENTORY (ItemID, Price, Quantity, ItemName) VALUES ('3', '50', '2', 'Screw Driver');";
+            Console.WriteLine("Inserting into Inventory");
 
+            string id;
+            string price;
+            string quantity;
+            string name;
+
+            Console.WriteLine("Enter ID: ");
+            id = Console.ReadLine();
+            Console.WriteLine("Enter Price: ");
+            price = Console.ReadLine();
+            Console.WriteLine("Enter Quantity: ");
+            quantity = Console.ReadLine();
+            Console.WriteLine("Enter Name: ");
+            name = Console.ReadLine();
+
+            string query = "INSERT INTO INVENTORY (ItemID, Price, Quantity, ItemName) VALUES ('" + id + "', '" + price + "', '" + quantity + "', '" + name + "');";
 
             //Open Connection
-
             if (this.OpenConnection() == true)
             {
                 // Create command and assign the query and conn from the constructor.
@@ -79,14 +93,63 @@ namespace Sales
                 cmd.ExecuteNonQuery();
                 //Close Connection
                 this.CloseConnection();
-
-
             }
         }
 
-        public void Update()
+
+        public void InventoryUpdate()
         {
-            string query = "UPDATE INVENTORY SET Price='100', Quantity='3', ItemName='Super Driver' WHERE ItemID='3'";
+            Console.WriteLine("Updating Record in Inventory");
+
+            string id;
+            string price;
+            string quantity;
+            string name;
+
+            Console.WriteLine("Enter ID: ");
+            id = Console.ReadLine();
+
+            string idselector = "Select * FROM INVENTORY WHERE ItemID ='" + id + "';";
+
+           //Create a list to store the result
+            List<string> list = new List<string>();
+
+            //Open connection
+            if (this.OpenConnection() == true)
+            {
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(idselector, conn);
+                //Create a data reader and Execute the command
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //Read the data and store them in the list
+                while (dataReader.Read())
+                {
+                    list.Add(dataReader["ItemID"] + "");
+                    list.Add(dataReader["Price"] + "");
+                    list.Add(dataReader["Quantity"] + "");
+                    list.Add(dataReader["ItemName"] + "");
+                }
+
+                //close Data Reader
+                dataReader.Close();
+
+                //close Connection
+                this.CloseConnection();
+            }
+
+            Console.WriteLine("Selecting for ItemID = " + id);
+            Console.WriteLine("ItemId: " + list[0] + " Price: " + list[1] + " Quantity: " + list[2] + " ItemName: " + list[3]);
+            
+
+            Console.WriteLine("Enter Price: ");
+            price = Console.ReadLine();
+            Console.WriteLine("Enter Quantity In Stock: ");
+            quantity = Console.ReadLine();
+            Console.WriteLine("Enter Name: ");
+            name = Console.ReadLine();
+
+            string query = "UPDATE INVENTORY SET Price='" + price + "', Quantity='" + quantity + "', ItemName='" + name + "' WHERE ItemID='" + id + "'";
 
             if (this.OpenConnection() == true)
             {
@@ -96,9 +159,10 @@ namespace Sales
                 cmd.ExecuteNonQuery();
                 //Close Connection
                 this.CloseConnection();
-
-
             }
+
+            Console.WriteLine("Successfuly Updated");
+            Console.ReadLine();
         }
 
         public void Delete()
