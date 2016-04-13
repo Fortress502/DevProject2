@@ -31,13 +31,13 @@ namespace Sales
             switch(dboperation)
             {
                 case "Insert":
-                    db.InventoryInsert();
+                    db.Insert(dbtable);
                     break;
                 case "Update":
-                    db.InventoryUpdate();
+                    db.Update(dbtable);
                     break;
                 case "Delete":
-                    db.InventoryDelete();
+                    db.Delete(dbtable);
                     break;
                 default:
                     Console.WriteLine("Error Selecting Database Operation");

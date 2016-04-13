@@ -64,14 +64,15 @@ namespace Sales
         }
 
 
-        public void InventoryInsert()
+        public void Insert(string getTable)
         {
-            Console.WriteLine("Inserting into Inventory");
-
+            string table = getTable;
             string id;
             string price;
             string quantity;
             string name;
+
+            Console.WriteLine("Inserting into " + table);
 
             Console.WriteLine("Enter ID: ");
             id = Console.ReadLine();
@@ -82,7 +83,7 @@ namespace Sales
             Console.WriteLine("Enter Name: ");
             name = Console.ReadLine();
 
-            string query = "INSERT INTO INVENTORY (ItemID, Price, Quantity, ItemName) VALUES ('" + id + "', '" + price + "', '" + quantity + "', '" + name + "');";
+            string query = "INSERT INTO " + table + " (ItemID, Price, Quantity, ItemName) VALUES ('" + id + "', '" + price + "', '" + quantity + "', '" + name + "');";
 
             //Open Connection
             if (this.OpenConnection() == true)
@@ -97,19 +98,20 @@ namespace Sales
         }
 
 
-        public void InventoryUpdate()
+        public void Update(string getTable)
         {
-            Console.WriteLine("Updating Record in Inventory");
-
+            string table = getTable;
             string id;
             string price;
             string quantity;
             string name;
 
+            Console.WriteLine("Updating Record In " + table);
+
             Console.WriteLine("Enter ID: ");
             id = Console.ReadLine();
 
-            string idselector = "Select * FROM INVENTORY WHERE ItemID ='" + id + "';";
+            string idselector = "Select * FROM " + table + " WHERE ItemID ='" + id + "';";
 
            //Create a list to store the result
             List<string> list = new List<string>();
@@ -156,7 +158,7 @@ namespace Sales
                 Console.WriteLine("Enter Name: ");
                 name = Console.ReadLine();
 
-                string query = "UPDATE INVENTORY SET Price='" + price + "', Quantity='" + quantity + "', ItemName='" + name + "' WHERE ItemID='" + id + "'";
+                string query = "UPDATE " + table + " SET Price='" + price + "', Quantity='" + quantity + "', ItemName='" + name + "' WHERE ItemID='" + id + "'";
 
                 if (this.OpenConnection() == true)
                 {
@@ -173,16 +175,18 @@ namespace Sales
             }
         }
 
-        public void InventoryDelete()
+        public void Delete(string getTable)
         {
             Console.WriteLine("Deleting Record");
 
+            string table = getTable;
             string id;
+
 
             Console.WriteLine("Enter ID: ");
             id = Console.ReadLine();
 
-            string idselector = "Select * FROM INVENTORY WHERE ItemID ='" + id + "';";
+            string idselector = "Select * FROM " + table + " WHERE ItemID ='" + id + "';";
 
             //Create a list to store the result
             List<string> list = new List<string>();
@@ -229,7 +233,7 @@ namespace Sales
 
                 if (confirm == "Y")
                 {
-                    string query = "DELETE FROM INVENTORY WHERE ItemID='" + id + "'";
+                    string query = "DELETE FROM " + table + " WHERE ItemID='" + id + "'";
 
                     if (this.OpenConnection() == true)
                     {
