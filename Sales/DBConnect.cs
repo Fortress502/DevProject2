@@ -138,50 +138,118 @@ namespace Sales
                 this.CloseConnection();
             }
 
-            Console.WriteLine("Selecting for ItemID = " + id);
-            Console.WriteLine("ItemId: " + list[0] + " Price: " + list[1] + " Quantity: " + list[2] + " ItemName: " + list[3]);
-            
-
-            Console.WriteLine("Enter Price: ");
-            price = Console.ReadLine();
-            Console.WriteLine("Enter Quantity In Stock: ");
-            quantity = Console.ReadLine();
-            Console.WriteLine("Enter Name: ");
-            name = Console.ReadLine();
-
-            string query = "UPDATE INVENTORY SET Price='" + price + "', Quantity='" + quantity + "', ItemName='" + name + "' WHERE ItemID='" + id + "'";
-
-            if (this.OpenConnection() == true)
+            if (list.Count() == 0)
             {
-                // Create command and assign the query and conn from the constructor.
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                //Execute Query
-                cmd.ExecuteNonQuery();
-                //Close Connection
-                this.CloseConnection();
+                Console.WriteLine("ID Not Found");
+                Console.ReadLine();
             }
+            else
+            {
+                Console.WriteLine("Selecting for ItemID = " + id);
+                Console.WriteLine("ItemId: " + list[0] + " Price: " + list[1] + " Quantity: " + list[2] + " ItemName: " + list[3]);
 
-            Console.WriteLine("Successfuly Updated");
-            Console.ReadLine();
+
+                Console.WriteLine("Enter Price: ");
+                price = Console.ReadLine();
+                Console.WriteLine("Enter Quantity In Stock: ");
+                quantity = Console.ReadLine();
+                Console.WriteLine("Enter Name: ");
+                name = Console.ReadLine();
+
+                string query = "UPDATE INVENTORY SET Price='" + price + "', Quantity='" + quantity + "', ItemName='" + name + "' WHERE ItemID='" + id + "'";
+
+                if (this.OpenConnection() == true)
+                {
+                    // Create command and assign the query and conn from the constructor.
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    //Execute Query
+                    cmd.ExecuteNonQuery();
+                    //Close Connection
+                    this.CloseConnection();
+                }
+
+                Console.WriteLine("Successfuly Updated");
+                Console.ReadLine();
+            }
         }
 
-        public void Delete()
+        public void InventoryDelete()
         {
-            string query = "DELETE FROM INVENTORY WHERE ItemName='Super Driver'";
+            Console.WriteLine("Deleting Record");
 
+            string id;
+
+            Console.WriteLine("Enter ID: ");
+            id = Console.ReadLine();
+
+            string idselector = "Select * FROM INVENTORY WHERE ItemID ='" + id + "';";
+
+            //Create a list to store the result
+            List<string> list = new List<string>();
+
+            //Open connection
             if (this.OpenConnection() == true)
             {
-                // Create command and assign the query and conn from the constructor.
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                //Execute Query
-                cmd.ExecuteNonQuery();
-                //Close Connection
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(idselector, conn);
+                //Create a data reader and Execute the command
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //Read the data and store them in the list
+                while (dataReader.Read())
+                {
+                    list.Add(dataReader["ItemID"] + "");
+                    list.Add(dataReader["Price"] + "");
+                    list.Add(dataReader["Quantity"] + "");
+                    list.Add(dataReader["ItemName"] + "");
+                }
+
+                //close Data Reader
+                dataReader.Close();
+
+                //close Connection
                 this.CloseConnection();
+            }
 
+            if (list.Count() == 0)
+            {
+                Console.WriteLine("ID Not Found");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("Deleting for ItemID = " + id);
+                Console.WriteLine("ItemId: " + list[0] + " Price: " + list[1] + " Quantity: " + list[2] + " ItemName: " + list[3]);
 
+                string confirm;
+
+                Console.WriteLine("Confirm you want to delete Y/N");
+
+                confirm = Console.ReadLine();
+
+                if (confirm == "Y")
+                {
+                    string query = "DELETE FROM INVENTORY WHERE ItemID='" + id + "'";
+
+                    if (this.OpenConnection() == true)
+                    {
+                        // Create command and assign the query and conn from the constructor.
+                        MySqlCommand cmd = new MySqlCommand(query, conn);
+                        //Execute Query
+                        cmd.ExecuteNonQuery();
+                        //Close Connection
+                        this.CloseConnection();
+
+                        Console.WriteLine("Succesfully Deleted");
+                        Console.ReadLine();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Delete Failed");
+                        Console.ReadLine();
+                    }
+                }
             }
         }
-
-
     }
 }
