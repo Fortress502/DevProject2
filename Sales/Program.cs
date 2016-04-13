@@ -19,9 +19,9 @@ namespace Sales
 
             DBConnect db = new DBConnect();
 
-           db.Insert();
+           //db.Insert();
            //db.Update();
-           //db.Delete();
+           db.Delete();
             
 
 

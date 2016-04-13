@@ -9,25 +9,23 @@ namespace Sales
 {
     public class DBConnect
     {
+        private MySqlConnection conn;
+
         //Constructor
         public DBConnect()
         {
-
+            Initialize();
         }
 
-
-        public MySqlConnection conn
+        private void Initialize()
         {
-            get { return conn; }
+            string connString = "Server=110.22.83.243;Port=3306;Database=sales;Uid=root;password=alpine12";
+            conn = new MySqlConnection(connString);
         }
-
 
         //Open Connection
         private bool OpenConnection()
         {
-            string connString = "Server=127.0.0.1;Port=3306;Database=sales;Uid=root;password=alpine12";
-            MySqlConnection conn = new MySqlConnection(connString);
-
             try
             {
                 conn.Open();
@@ -68,7 +66,7 @@ namespace Sales
 
         public void Insert()
         {
-            string query = "INSERT INTO `Inventory` (`ItemID`, `Price`, `Quantity`, `ItemName`) VALUES (3, '50', '2', 'Screw Driver');";
+            string query = "INSERT INTO INVENTORY (ItemID, Price, Quantity, ItemName) VALUES ('3', '50', '2', 'Screw Driver');";
 
 
             //Open Connection
@@ -88,7 +86,7 @@ namespace Sales
 
         public void Update()
         {
-            string query = "UPDATE `Inventory` SET Price='100', Quantity='3', ItemName='Super Driver' WHERE ItemID='3'";
+            string query = "UPDATE INVENTORY SET Price='100', Quantity='3', ItemName='Super Driver' WHERE ItemID='3'";
 
             if (this.OpenConnection() == true)
             {
@@ -105,7 +103,7 @@ namespace Sales
 
         public void Delete()
         {
-            string query = "DELETE FROM 'Inventory' WHERE ItemName='Super Driver'";
+            string query = "DELETE FROM INVENTORY WHERE ItemName='Super Driver'";
 
             if (this.OpenConnection() == true)
             {
