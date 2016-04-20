@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace Sales
 {
     public partial class EditInventoryRecord : Form
     {
+
         public EditInventoryRecord()
         {
             InitializeComponent();
@@ -37,6 +39,15 @@ namespace Sales
         private void btnPrevious(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+        private void btnLoadTable(object sender, EventArgs e)
+        {
+            DBConnect DB = new DBConnect();
         }
     }
 }

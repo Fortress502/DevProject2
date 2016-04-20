@@ -15,11 +15,10 @@ namespace Sales
         [STAThread]
         static void Main()
         {
-            /* Console.WriteLine("Test");
 
             DBConnect db = new DBConnect();
 
-            string dbtable;
+            /*string dbtable;
             string dboperation;
 
             Console.WriteLine("Select Table");
@@ -44,7 +43,11 @@ namespace Sales
                     Console.ReadLine();
                     break;
             }
+
             */
+            db.Test1();
+
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main());
