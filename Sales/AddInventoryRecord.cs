@@ -22,10 +22,6 @@ namespace Sales
 
         }
 
-        private void btnConfrim(object sender, EventArgs e)
-        {
-
-        }
 
         private void lblStockID(object sender, EventArgs e)
         {
@@ -61,5 +57,11 @@ namespace Sales
         {
 
         }
+
+        private void btnConfirm(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
