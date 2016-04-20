@@ -19,7 +19,11 @@ namespace Sales
 
         private void btnBack(object sender, EventArgs e)
         {
-
+            Main MainFrm = new Main();
+            MainFrm.Show();
+            this.Hide();
+           
+           
         }
 
 
