@@ -63,5 +63,9 @@ namespace Sales
 
         }
 
+        private void lblAddInventoryRecord(object sender, EventArgs e)
+        {
+
+        }
     }
 }
