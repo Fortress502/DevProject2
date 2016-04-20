@@ -15,7 +15,7 @@ namespace Sales
         [STAThread]
         static void Main()
         {
-            Console.WriteLine("Test");
+            /* Console.WriteLine("Test");
 
             DBConnect db = new DBConnect();
 
@@ -44,10 +44,10 @@ namespace Sales
                     Console.ReadLine();
                     break;
             }
-
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form1());
+            */
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Main());
         }
     }
 
