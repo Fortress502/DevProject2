@@ -10,6 +10,7 @@ namespace Sales
     public class DBConnect
     {
         private MySqlConnection conn;
+        private string connString;
 
         //Constructor
         public DBConnect()
@@ -23,8 +24,82 @@ namespace Sales
             conn = new MySqlConnection(connString);
         }
 
+
+
+
+        /*public void Insert()
+        {
+            var stringToReturn = "";
+            {
+                //Open connection
+                if (this.OpenConnection() == true)
+                {
+                        var sqlCommand = "INSERT INTO INVENTORY(ItemID, Price, Quantity, ItemName) VALUES("5","5","5","TEST")";
+                        MySqlCommand cmd = new MySqlCommand(sqlCommand, conn);
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+        }
+        /*
+        /*
+
+                        string query = "INSERT INTO INVENTORY (ItemID, Price, Quantity, ItemName) VALUES ('" + id + "', '" + price + "', '" + quantity + "', '" + name + "');";
+
+            //Open Connection
+            if (this.OpenConnection() == true)
+            {
+                // Create command and assign the query and conn from the constructor.
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                //Execute Query
+                cmd.ExecuteNonQuery();
+                //Close Connection
+                this.CloseConnection();
+
+
+        */
+
+
+        public void Test1()
+        {
+            //Open Connection
+            if (this.OpenConnection() == true)
+            {
+                var cmd = conn.CreateCommand();
+                cmd.CommandText = "INSERT INTO INVENTORY(ItemID,Price,Quantity,ItemName) VALUES(@id, @price, @quantity, @itemname)";
+                cmd.Parameters.AddWithValue("@id", "4");
+                cmd.Parameters.AddWithValue("@price", "4");
+                cmd.Parameters.AddWithValue("@quantity", "4");
+                cmd.Parameters.AddWithValue("@itemname", "TEST4");
+                // Create command and assign the query and conn from the constructor.
+
+                //Execute Query
+                cmd.ExecuteNonQuery();
+
+
+                //Close Connection
+                this.CloseConnection();
+
+
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //Open Connection
-        private bool OpenConnection()
+        public bool OpenConnection()
         {
             try
             {
