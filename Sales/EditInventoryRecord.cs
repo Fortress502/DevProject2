@@ -19,10 +19,22 @@ namespace Sales
 
         private void btnBack(object sender, EventArgs e)
         {
-
+            Main MainFrm = new Main();
+            MainFrm.Show();
+            this.Hide();
         }
 
         private void btnEditSelectedRecord(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNext(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPrevious(object sender, EventArgs e)
         {
 
         }
