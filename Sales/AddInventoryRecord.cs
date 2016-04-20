@@ -34,7 +34,6 @@ namespace Sales
 
         private void txtStockName(object sender, EventArgs e)
         {
-
         }
 
         private void lblStockName(object sender, EventArgs e)
@@ -64,6 +63,7 @@ namespace Sales
 
         private void btnConfirm(object sender, EventArgs e)
         {
+            DBConnect db = new DBConnect();
 
         }
 

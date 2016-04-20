@@ -45,7 +45,7 @@ namespace Sales
             }
 
             */
-            db.Test1();
+            db.Insert("50", "50", "FIFTEE");
 
             
             Application.EnableVisualStyles();
