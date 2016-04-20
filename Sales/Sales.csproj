@@ -60,6 +60,12 @@
       <DependentUpon>AddInventoryRecord.cs</DependentUpon>
     </Compile>
     <Compile Include="DBConnect.cs" />
+    <Compile Include="EditInventoryRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditInventoryRecord.Designer.cs">
+      <DependentUpon>EditInventoryRecord.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,8 +74,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SingleEditRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SingleEditRecord.Designer.cs">
+      <DependentUpon>SingleEditRecord.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddInventoryRecord.resx">
       <DependentUpon>AddInventoryRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditInventoryRecord.resx">
+      <DependentUpon>EditInventoryRecord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

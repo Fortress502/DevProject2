@@ -27,7 +27,10 @@ namespace Sales
 
         private void btnEditInventoryRecord(object sender, EventArgs e)
         {
-
+            this.Hide();
+            EditInventoryRecord EditInvRecordFrm = new EditInventoryRecord();
+            EditInvRecordFrm.Show();
+            //this.Close();
         }
 
         private void btnCheckStockLevel(object sender, EventArgs e)
