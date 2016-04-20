@@ -19,6 +19,7 @@ namespace Sales
 
         private void btnAddInventoryRecord(object sender, EventArgs e)
         {
+            this.Hide();
             AddInventoryRecord AddInvRecordFrm = new AddInventoryRecord();
             AddInvRecordFrm.Show();
             //this.Close();

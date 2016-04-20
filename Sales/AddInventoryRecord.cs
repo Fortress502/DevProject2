@@ -22,7 +22,7 @@ namespace Sales
 
         }
 
-        private void btnAdd(object sender, EventArgs e)
+        private void btnConfrim(object sender, EventArgs e)
         {
 
         }

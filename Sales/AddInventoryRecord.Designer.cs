@@ -57,12 +57,12 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(71, 331);
-            this.button2.Name = "button2";
+            this.button2.Name = "btnConfirm";
             this.button2.Size = new System.Drawing.Size(288, 170);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Add";
+            this.button2.Text = "Confirm";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.btnAdd);
+            this.button2.Click += new System.EventHandler(this.btnConfirm);
             // 
             // textBox1
             // 
